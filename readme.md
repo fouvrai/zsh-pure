@@ -101,6 +101,14 @@ Time in seconds to delay git dirty checking for large repositories (git status t
 
 Defines the prompt symbol. The default value is `❯`.
 
+### `PURE_GIT_DOWN_ARROW`
+
+Defines the git down arrow symbol. The default value is `⇣`.
+
+### `PURE_GIT_UP_ARROW`
+
+Defines the git up arrow symbol. The default value is `⇡`.
+
 ## Example
 
 ```sh
@@ -144,6 +152,12 @@ antigen bundle sindresorhus/pure
 ```
 
 ## FAQ
+
+### My preprompt is missing when I clear the screen with Ctrl+L
+
+Pure doesn't register its custom *clear-screen* widget if it has been previously modified. If you haven't registered your own zle widget with `zle -N clear-screen custom-clear-screen` it might have been done by third-party modules. For example `zsh-syntax-highlighting` and `zsh-history-substring-search` are known to do this and they should for that reason be **the very last thing** in your `.zshrc` (as pointed out in their documentation).
+
+To find out the culprit that is overriding your *clear-screen* widget, you can run the following command: `zle -l | grep clear-screen`.
 
 ### I am stuck in a shell loop in my terminal that ask me to authenticate. What should I do ?
 
